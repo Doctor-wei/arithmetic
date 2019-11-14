@@ -12,8 +12,10 @@ public class compute {
 		while(i<50) {
 		num1=random.nextInt(101);//第一个数
 		num2=random.nextInt(101);//第二个数
-		temp=random.nextInt(2);//符号,1为加，2为减
-		flag=this.CheckRepeate(num1, num2, temp); //检查重复,1为重复
+		temp=random.nextInt(2);//符号
+		if(i==1&&temp==Formula[0][1])//确保一定存在加法和减法
+			temp=1-Formula[0][1];
+		flag=this.CheckRepeate(num1, num2, temp); //检查重复
 		if(temp==1&&flag==0) {
 			if(num1+num2<=100) {
 				Formula[i][0]=num1;
@@ -33,6 +35,7 @@ public class compute {
 			}
 		}
 		flag=1;
+		
 		}
 	}	
 	public int CheckRepeate(int num1,int num2,int temp) {
@@ -43,7 +46,8 @@ public class compute {
 				  break;
 			}
 		}
-		return flag1;//1为重复		
+		return flag1;
+			
 	}
 	
 	public void printEquations() {	//输出算式
