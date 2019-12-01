@@ -5,8 +5,8 @@ public class ExerciseSystem {
 		 Exercise exercise =new Exercise();
 		 
 		 exercise.GenerateAdd(50);
-		 exercise.Format_add_print(50);
-		 exercise.FormatAddAnswerPrint();
+		 exercise.Format_add_print(20,5);
+		 exercise.FormatAddAnswerPrint(10);
 		 
 		 
 	}

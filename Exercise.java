@@ -9,7 +9,6 @@ import compute.Formula;
 
 public class Exercise {
 	 private static final short formula_num = 50;
-     private static final short col_num = 5;
      Random random = new Random();
      int i = 0, temp = 0;
      LinkedHashSet<String> Set_add = new LinkedHashSet<>();//存加法
@@ -27,7 +26,7 @@ public class Exercise {
     		 }while(Set_add.add(addition.toString()));
     	 Add_answer.add(addition.getAnswer());
     	 }	 
-     }//生成一定数量的加法算式
+     }//生成一定数量的加法算式,count为数量
      
      public void GenerateSub(int count) {
     	 for(i = 0;i < count;i++) {
@@ -58,65 +57,65 @@ public class Exercise {
     	 }	 
      }//生成一定数量混合算式
      
-     public void Format_add_print(int count) {
+     public void Format_add_print(int count, int num) {
     	 int i = 0;
     	 for(String s:Set_add) {
     		 System.out.print(s+"\t");
     		 i++;
-    		 if (i % col_num == 0)
+    		 if (i % num == 0)
     			 System.out.print("\n"); 
     		
     	 }	 
      }//输出加法算式
      
-     public void Format_sub_print(int count) {
+     public void Format_sub_print(int count, int num) {
     	 int i = 0;
     	 for(String s:Set_sub) {
     		 i++;
     		 System.out.print(s+"\t");
-    		 if (i % col_num == 0)
+    		 if (i % num == 0)
     			 System.out.print("\n"); 
     		
     	 }	 
      }//输出减法算式
      
-     public void Format_mix_print(int count) {
+     public void Format_mix_print(int count, int num) {
     	 int i = 0;
     	 for(String s:Set_mix) {
     		 i++;
     		 System.out.print(s+"\t");
-    		 if (i % col_num == 0)
+    		 if (i % num == 0)
     			 System.out.print("\n"); 
     		
     	 }	 
      }//输出混合算式
      
-     public void FormatMixAnswerPrint() {
+     public void FormatMixAnswerPrint(int num) {
     	 for(int i = 0;i < Mix_answer.size();i++) {
  			System.out.print(Mix_answer.get(i)+"\t");
- 			if ((i+1) % col_num == 0)
+ 			if ((i+1) % num == 0)
     			   System.out.print("\n"); 
      	 }
     	 	 
-     }//输出混合算式答案
+     }//输出混合算式答案,num为一行输出几个
      
-     public void FormatAddAnswerPrint() {
+     public void FormatAddAnswerPrint(int num) {
     	 for(int i = 0;i < Add_answer.size();i++) {
  			System.out.print(Add_answer.get(i)+"\t");
- 			if ((i+1) % col_num == 0)
+ 			if ((i+1) % num == 0)
     			   System.out.print("\n"); 
      	 }
     	 	 
-     }//输出加法算式答案
+     }//输出加法算式答案,num为一行输出几个
      
-     public void FormatSubAnswerPrint() {
+     public void FormatSubAnswerPrint(int num) {
     	 for(int i = 0;i < Sub_answer.size();i++) {
  			System.out.print(Sub_answer.get(i)+"\t");
- 			if ((i+1) % col_num == 0)
+ 			if ((i+1) % num == 0)
     			   System.out.print("\n"); 
      	 }
     	 	 
-     }//输出减法算式答案
+     }//输出减法算式答案,num为一行输出几个
      
      
 }
