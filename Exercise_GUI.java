@@ -9,6 +9,7 @@ import java.awt.print.Printable;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,6 +27,26 @@ public class Exercise_GUI {
 	        JPanel content = new JPanel(new GridLayout(5,10,0,0)); //内容区,网格布局，每行10道
 	        JPanel left_foot = new JPanel(new FlowLayout(FlowLayout.LEADING,40,15)); 
 	        JPanel right_foot = new JPanel(new GridLayout(1,4,50,0)); 
+	        JComboBox cmbadd=new JComboBox();    //创建JComboBox
+	        JComboBox cmbsub=new JComboBox();    //创建JComboBox
+	        JComboBox cmbmix=new JComboBox();    //创建JComboBox
+	        
+	        cmbadd.addItem("--请选择练习的加法习题--");    //向下拉列表中添加一项
+	        cmbadd.addItem("第一套");
+	        cmbadd.addItem("第二套");
+	        cmbadd.addItem("第三套");
+	        
+	        cmbsub.addItem("--请选择练习的减法习题--");    //向下拉列表中添加一项
+	        cmbsub.addItem("第一套");
+	        cmbsub.addItem("第二套");
+	        cmbsub.addItem("第三套");
+	        
+	        cmbmix.addItem("--请选择练习的减法习题--");    //向下拉列表中添加一项
+	        cmbmix.addItem("第一套");
+	        cmbmix.addItem("第二套");
+	        cmbmix.addItem("第三套");
+	        
+	        
 	        JButton add_btn = new JButton("加法算式");
 	        JButton sub_btn = new JButton("减法算式");
 	        JButton mix_btn = new JButton("混合算式");
@@ -33,9 +54,12 @@ public class Exercise_GUI {
 	        
 	        JButton ans_btn = new JButton("获得答案");
             add_btn.setBounds(50, 0, 50, 20);
-	        nav.add(add_btn);
-	        nav.add(sub_btn);
-	        nav.add(mix_btn);
+            nav.add(cmbadd);
+            nav.add(cmbsub);
+            nav.add(cmbmix);
+            //nav.add(add_btn);
+//	        nav.add(sub_btn);
+//	        nav.add(mix_btn);
 	        nav.add(save_btn);
 	        
 
@@ -66,16 +90,31 @@ public class Exercise_GUI {
 	        frame.setVisible(true);
 	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        
-            add_btn.addActionListener(new ActionListener() {
+            cmbadd.addActionListener(new ActionListener() {
 				
 				@Override
 			public void actionPerformed(ActionEvent e) {
 				flag.setText("Add");
 				content.removeAll(); 
 				content.repaint();
+				//初始化
+				Tnum.setText("");
+				Fnum.setText("");
+				Tp.setText("");
+				Score.setText("");
+				
 				AddFile add = new AddFile();
 				ArrayList<String[]> lstFile = new ArrayList<String[]>();
-				lstFile=add.Read("Practice", "Add", 1);//读练习文件
+				int number;
+				if(cmbadd.getSelectedItem().toString()=="第一套")
+				number=1;
+				else if(cmbadd.getSelectedItem().toString()=="第二套")
+				number=2;
+				else if (cmbadd.getSelectedItem().toString()=="第三套")
+					number=3;
+				else 
+					number=0;
+				lstFile=add.Read("Practice", "Add", number);//读练习文件
                 for(int i=0;i<lstFile.size();i++) {
                 	JLabel label = new JLabel(lstFile.get(i)[1]);
 				    content.add(label);
@@ -90,16 +129,31 @@ public class Exercise_GUI {
 				}
 			});
 	        
-		sub_btn.addActionListener(new ActionListener() {
+		cmbsub.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				flag.setText("Sub");
 				content.removeAll();
 				content.repaint();
+				//初始化
+				Tnum.setText("");
+				Fnum.setText("");
+				Tp.setText("");
+				Score.setText("");
+				
 				SubFile sub = new SubFile();
 				ArrayList<String[]> lstFile = new ArrayList<String[]>();
-				lstFile = sub.Read("Practice", "Sub", 1);// 读练习文件
+				int number=0;
+				if(cmbadd.getSelectedItem().toString()=="第一套")
+				number=1;
+				else if(cmbadd.getSelectedItem().toString()=="第二套")
+				number=2;
+					else if (cmbadd.getSelectedItem().toString()=="第三套")
+					number=3;
+					else
+						number=0;
+				lstFile = sub.Read("Practice", "Sub", number);// 读练习文件
 				for (int i = 0; i < lstFile.size(); i++) {
 					JLabel label = new JLabel(lstFile.get(i)[1]);
 					content.add(label);
@@ -114,16 +168,32 @@ public class Exercise_GUI {
 			}
 		});
 	    
-		mix_btn.addActionListener(new ActionListener() {
+		cmbmix.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				flag.setText("Mix");
 				content.removeAll();
 				content.repaint();
+				
+				//初始化
+				Tnum.setText("");
+				Fnum.setText("");
+				Tp.setText("");
+				Score.setText("");
+				
 				MixFile mix = new MixFile();
 				ArrayList<String[]> lstFile = new ArrayList<String[]>();
-				lstFile = mix.Read("Practice", "Mix", 1);// 读练习文件
+				int number=0;
+				if(cmbadd.getSelectedItem().toString()=="第一套")
+				number=1;
+				else if(cmbadd.getSelectedItem().toString()=="第二套")
+				number=2;
+				else if (cmbadd.getSelectedItem().toString()=="第三套")
+				number=3;
+				else
+					number=0;
+				lstFile = mix.Read("Practice", "Mix", number);// 读练习文件
 				for (int i = 0; i < lstFile.size(); i++) {
 					JLabel label = new JLabel(lstFile.get(i)[1]);
 					content.add(label);
@@ -165,7 +235,18 @@ public class Exercise_GUI {
 			}
 		});
 		
-		
+//		save_btn.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				for (int i = 0; i < 50; i++) {
+//					filed[i].setText();
+//				}
+//				content.revalidate();
+//			}
+//		});
+//	    
 	    }
 
 }
