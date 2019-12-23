@@ -1,3 +1,4 @@
+//æ­¤GUIä¸ºå®Œæˆï¼Œä¸ºåˆä»£ç‰ˆæœ¬
 package compute3;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -17,17 +18,17 @@ import javax.swing.JTextField;
 public class Exercise_GUI {
 	 public static void main(String[] agrs)
 	    {
-	        JFrame frame = new JFrame("Á·Ï°Ìâ");    //´´½¨Frame´°¿Ú
-	        JPanel nav = new JPanel(new FlowLayout(FlowLayout.LEADING,20,15)); //µ¼º½À¸Á÷Ê½²¼¾Ö£¬¼ä¸ô20
-	        JPanel content = new JPanel(new GridLayout(5,10,0,0)); //ÄÚÈİÇø,Íø¸ñ²¼¾Ö£¬Ã¿ĞĞ10µÀ
+	        JFrame frame = new JFrame("ç»ƒä¹ é¢˜");    //åˆ›å»ºFrameçª—å£
+	        JPanel nav = new JPanel(new FlowLayout(FlowLayout.LEADING,20,15)); //å¯¼èˆªæ æµå¼å¸ƒå±€ï¼Œé—´éš”20
+	        JPanel content = new JPanel(new GridLayout(5,10,0,0)); //å†…å®¹åŒº,ç½‘æ ¼å¸ƒå±€ï¼Œæ¯è¡Œ10é“
 	        JPanel left_foot = new JPanel(new FlowLayout(FlowLayout.LEADING,40,15)); 
 	        JPanel right_foot = new JPanel(new GridLayout(1,4,50,0)); 
-	        JButton add_btn = new JButton("¼Ó·¨ËãÊ½");
-	        JButton sub_btn = new JButton("¼õ·¨ËãÊ½");
-	        JButton mix_btn = new JButton("»ìºÏËãÊ½");
-	        JButton save_btn = new JButton("±£´æ½á¹û");
+	        JButton add_btn = new JButton("åŠ æ³•ç®—å¼");
+	        JButton sub_btn = new JButton("å‡æ³•ç®—å¼");
+	        JButton mix_btn = new JButton("æ··åˆç®—å¼");
+	        JButton save_btn = new JButton("ä¿å­˜ç»“æœ");
 	        
-	        JButton ans_btn = new JButton("»ñµÃ´ğ°¸");
+	        JButton ans_btn = new JButton("è·å¾—ç­”æ¡ˆ");
             add_btn.setBounds(50, 0, 50, 20);
 	        nav.add(add_btn);
 	        nav.add(sub_btn);
@@ -38,12 +39,12 @@ public class Exercise_GUI {
 	        
 	        left_foot.add(ans_btn);
 	        left_foot.add(right_foot);
-	        right_foot.add(new JLabel("ÕıÈ·ÊıÁ¿:"));
-	        right_foot.add(new JLabel("´íÎóÊıÁ¿:"));
-	        right_foot.add(new JLabel("ÕıÈ·ÂÊ:"));
-	        right_foot.add(new JLabel("×ÜµÃ·Ö:"));
+	        right_foot.add(new JLabel("æ­£ç¡®æ•°é‡:"));
+	        right_foot.add(new JLabel("é”™è¯¯æ•°é‡:"));
+	        right_foot.add(new JLabel("æ­£ç¡®ç‡:"));
+	        right_foot.add(new JLabel("æ€»å¾—åˆ†:"));
 	        
-	        frame.setLayout(new BorderLayout());    //ÎªFrame´°¿ÚÉèÖÃ²¼¾ÖÎªBorderLayout
+	        frame.setLayout(new BorderLayout());    //ä¸ºFrameçª—å£è®¾ç½®å¸ƒå±€ä¸ºBorderLayout
 	        
 	        frame.add(nav,BorderLayout.NORTH);
 	        frame.add(content,BorderLayout.CENTER);
