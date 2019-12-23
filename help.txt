@@ -1,0 +1,19 @@
+使用说明：
+1、本题目运行前需要在"E:\\test\\"创建三个文件夹，分别名为Exercise,存放习题文件。Practice，存放练习文件。Result存放批改结果。
+2、在ExerciseSystem中创建任意SubFile、AddFile、MixFile对象
+3、利用已有对象的Createfile（）方法创建习题文件
+4、利用practice()方法进行习题的练习，练习过程可以中断，中断标志为用户输入“-1”
+5、练习完之后，利用Correct（）方法对习题进行批改。
+6、如果下次继续练习，则可直接使用practice()方法对指定文件进行练习。习题会提示，此套习题是否被练习过，如果练习过将自动从未做的系统开始作答。
+一、FileIO抽象类介绍
+变量：
+ArrayList<String> Answer = new ArrayList<String>();//存放用户输入的答案
+方法：
+1、protected abstract void Createfile(int file_count, int exercise_count);//函数作用创建（加法、减法等）文件,file_count文件数量，exercise习题数量。在继承类里面进行了重写。
+2、public void Create_Dir(String Name) // 函数作用为创建目录，name为二级文件夹名称，默认路径为"E:\\test\\";
+3、public ArrayList<String[]> Read(String FileType, String type ,int num) //函数作用为读文件操作，FileType为文件类型（习题、练习、批改等），type为读习题的类型,num为读第几套习题，返回类型为List数组
+4、public void print(String type, int num)//作用为一道一道输出，且收集用户输入的答案，type为读习题的类型,num为读第几套习题。
+5、public void CreatePractice(String type, int num) //作用为依据已有习题文件创建练习文件，习题文件必须存在。
+6、public void practice(String type, int num)//作用为打开创建的练习文件进行练习
+7、public void Correct(String type, int num)//作用为批改文件
+二、SubFile、AddFile、MixFile为FileIO继承类。里面重新 Createfile方法用于生成指定指定数量习题的指定数量文件。
